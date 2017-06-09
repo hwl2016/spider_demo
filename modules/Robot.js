@@ -224,7 +224,7 @@ Robot.prototype.setOpt= function(options){
     this.robots= options.robots|| this.robots|| true;//是否读取robots.txt文件
     this.debug= options.debug|| this.debug|| false;//是否开启调试模式
 
-    this.file= newFile({
+    this.file = new File({
         path:this.outputPath,
         filename:this.outputFileName
     });
@@ -237,7 +237,7 @@ Robot.prototype.setOpt= function(options){
 
         for(i = 0; i < len; i++){
             url = oResult.aTargetURLList[i];
-            str +="（"+oResult.oTargetInfoList[url].name+"） : "+url+"\n"
+            str += "（"+oResult.oTargetInfoList[url].name+"） : "+url+"\n"
         }
         this.file.save(str,true);
         this.file.save("\n抓取完成...\n",true);
