@@ -21,19 +21,19 @@ var reg1 =/\/html\/[a-z0-9]+\/[a-z0-9]+\/[\d]+\/[\d]+\.html/gmi;
 var reg2 =/\/html\/[a-z0-9]+\/index\.html/gmi;
 //var reg3 = /(ftp|http):\/\/.+\.(rmvb|mp4|avi|flv|mkv|3gp|wmv|wav|mpg|mov)/gmi;
 
-/*var rule = new schedule.RecurrenceRule();
+var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek= [0,new schedule.Range(1,6)];
-rule.hour= 19;
-rule.minute= 45;
+rule.hour= 20;
+rule.minute= 30;
 console.log("定时爬取任务，下次爬取时间为" + rule.hour + "时" + rule.minute + "分");
 
-var j = schedule.scheduleJob(rule,function(){
-    robot.setOpt({
-        outputFileName:getTime()+"-"+"电影天堂.txt"
-    });
-    console.log("开始定时爬取任务...");
-    start();
-});*/
+// var j = schedule.scheduleJob(rule,function(){
+//     robot.setOpt({
+//         outputFileName:getTime()+"-"+"电影天堂.txt"
+//     });
+//     console.log("开始定时爬取任务...");
+//     start();
+// });
 
 start();
 
@@ -114,5 +114,5 @@ function getTime(){
     mi = mi < 10 ? "0" + mi :mi;
     s = s < 10 ? "0" + s : s;
 
-    return y + "-" + m + "-" + d + " " + h + ":" + mi + ":" + s;
+    return y + "_" + m + "_" + d + "_" + h + "_" + mi + "_" + s;
 }

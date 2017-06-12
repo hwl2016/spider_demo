@@ -4,14 +4,14 @@
 var urlUtil = require("url");
 var pathUtil = require("path");
 
-var URL= function(){};
+var URL = function(){};
 
 /**
  * @desc 获取URL地址 路径部分 不包含域名以及QUERYSTRING
  * @param string url
  * @return string
  */
-URL.getUrlPath= function(url){
+URL.getUrlPath = function(url){
 
     if(!url){
         return '';
@@ -32,7 +32,7 @@ URL.getUrlPath= function(url){
  * @param string urlPart
  * @return boolean
  */
-URL.isValidPart= function(urlPart){
+URL.isValidPart = function(urlPart){
     if(!urlPart){
         return false;
     }
@@ -60,7 +60,7 @@ URL.isValidPart= function(urlPart){
  * @param string url2 被访问地址分析出来的URL
  * @return string || boolean
  */
-URL.prototype.fix= function(url, url2){
+URL.prototype.fix = function(url, url2){
     if(!url || !url2){
         return false;
     }
