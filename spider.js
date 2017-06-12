@@ -27,15 +27,15 @@ rule.hour= 20;
 rule.minute= 30;
 console.log("定时爬取任务，下次爬取时间为" + rule.hour + "时" + rule.minute + "分");
 
-var j = schedule.scheduleJob(rule,function(){
-    robot.setOpt({
-        outputFileName:getTime()+"-"+"电影天堂.txt"
-    });
-    console.log("开始定时爬取任务...");
-    start();
-});
+// var j = schedule.scheduleJob(rule,function(){
+//     robot.setOpt({
+//         outputFileName:getTime()+"-"+"电影天堂.txt"
+//     });
+//     console.log("开始定时爬取任务...");
+//     start();
+// });
 
-// start();
+start();
 
 function start(){
     robot.go(function( $, aType, url, aNewURLQueue, aTargetURLList, oTargetInfoList ) {

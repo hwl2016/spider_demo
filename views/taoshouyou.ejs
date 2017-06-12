@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/bootstrap/css/bootstrap.min.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  	<div class="btn btn-primary" id="js_btn">开始爬取<%= name %>页面数据</div>
+
+	<script src="/javascripts/jquery-1.7.2.min.js"></script>
+	<script>
+		$(function() {
+			$('#js_btn').click(function() {
+				$.ajax({
+					url: '/spider/tsy/crawler',
+					type: 'GET',
+					success: function(data) {
+						console.log(data)
+					},
+					error: function() {
+						console.log('error')
+					}
+				})
+			})
+		})
+	</script>
+  </body>
+</html>

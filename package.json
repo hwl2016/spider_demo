@@ -23,6 +23,7 @@
     "https": "^1.0.0",
     "iconv-lite": "^0.4.17",
     "mkdirp": "^0.5.1",
+    "mongoose": "^4.10.5",
     "node-schedule": "^1.2.3",
     "path": "^0.12.7",
     "request": "^2.81.0",
