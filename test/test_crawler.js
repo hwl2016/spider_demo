@@ -23,36 +23,58 @@ keyWorlds = ['A', 'B', 'C'];
 
 var urlQueue = [];
 
-keyWorlds.forEach((value, index, arr) => {
-	var url = 'http://www.taoshouyou.com/com/game/gamelist-interface?firstletter=' + value;
+// keyWorlds.forEach((value, index, arr) => {
+// 	var url = 'http://www.taoshouyou.com/com/game/gamelist-interface?firstletter=' + value;
+// 	robot.getJSON(url, function(d) {
+// 		var res = typeof d == 'string' ? JSON.parse(d) : d;
+// 		var hrefArr = createPath(res.data);
+// 		urlQueue.push(hrefArr);
+// 		if(index == keyWorlds.length - 1) {
+// 			getPageInfo(hrefArr[0], 0, hrefArr);
+// 		}
+// 	})
+// });
+
+getAllUrl(keyWorlds[0], 0, keyWorlds)
+
+function getAllUrl(ch, i, arr) {
+	url = 'http://www.taoshouyou.com/com/game/gamelist-interface?firstletter=' + ch;
 	robot.getJSON(url, function(d) {
 		var res = typeof d == 'string' ? JSON.parse(d) : d;
 		var hrefArr = createPath(res.data);
-		urlQueue.push(hrefArr);
-		if(index == keyWorlds.length - 1) {
-			getPageInfo(hrefArr)
+		urlQueue.concat(hrefArr);
+		i++;
+		if(i < arr.length) {
+			getAllUrl(url, i, arr)
+		}else {
+			console.log(urlQueue)
 		}
+		
 	})
-});
+}
 
 function createPath(obj) {
 	var arr = [];
 	for(var i = 0; i < obj.length; i++) {
 		arr.push(`http://www.taoshouyou.com/game/${obj[i].spelling}-${obj[i].id}-0-0`);
 	}
+	console.log(arr)
 	return arr;
 }
 
-function getPageInfo(arr) {
-	for(var i = 0; i < arr.length; i++) {
-		request(arr[i], function(err, response, body) {
-			if(!err && response.statusCode == 200) {
-				var $$ = cheerio.load(body);
-				getDetailInfo($$, body);
-				
+//递归调用
+function getPageInfo(url, i, arr) {
+	request(url, function(err, response, body) {
+		if(!err && response.statusCode == 200) {
+			var $ = cheerio.load(body);
+			getDetailInfo($, body);
+			getPageInfo(url);
+			i++;
+			if(i < arr.length) {
+				getPageInfo(arr[i], i, arr);
 			}
-		})
-	}
+		}
+	})
 	
 }
 
@@ -67,7 +89,7 @@ function getDetailInfo($, data) {
 	})
 
 	//查找分页
-	var totalPage = $('.pagination .jumpto').prev('li').find('a').text().split('\/')[1];
+	var totalPage = $('.pagination .jumpto').prev('li').find('a').text().split('/')[1];
 	console.log(`totalPage: ${totalPage}`)
 }
 
