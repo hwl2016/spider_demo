@@ -1,5 +1,5 @@
 var express = require("express");
-var Robot = require("./modules/robot.js");
+var Robot = require("./robot.js");
 var schedule = require("node-schedule");
 
 var options = {
@@ -16,6 +16,8 @@ var options = {
         file.save("\n抓取完成...\n总共访问网页数为"+oResult.iCount+"条，其中成功访问网页数"+oResult.iSuccessNum+"条",true);
     }
 };
+
+
 var robot = new Robot(options);
 var reg1 =/\/html\/[a-z0-9]+\/[a-z0-9]+\/[\d]+\/[\d]+\.html/gmi;
 var reg2 =/\/html\/[a-z0-9]+\/index\.html/gmi;
