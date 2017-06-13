@@ -3,8 +3,8 @@ var router = express.Router();
 
 var request = require("request");
 var cheerio = require("cheerio");
-var mdb = require('../src/MDB');
 
+var mdb = require('../src/MDB');
 var log = require("../src/log");	//日志
 
 router.get('/tsy', function(req, res, next) {
@@ -16,7 +16,11 @@ router.get('/tsy', function(req, res, next) {
 
 router.get('/tsy/crawler', function(req, res, next) {
 	log.logger.info('INFO');
-	var url = "http://www.taoshouyou.com/";
+	var url = "http://www.taoshouyou.com/game";
+
+	//获取ajax的数据列表
+
+
 
 	request({
 		url: url,
@@ -39,36 +43,12 @@ router.get('/tsy/crawler', function(req, res, next) {
 			});
 		}else {
 			res.json({
-				status: '200',
+				status: '500',
 				msg: 'fail'
 			});
 		}
 	})
 
-	// res.json({
-	// 	status: '200',
-	// 	data: {
-	// 		index: 1,
-	// 		total: 3,
-	// 		list: [
-	// 			{
-	// 				id: 1,
-	// 				name: 'Michael',
-	// 				age: 18
-	// 			},
-	// 			{
-	// 				id: 2,
-	// 				name: 'Tom',
-	// 				age: 20
-	// 			},
-	// 			{
-	// 				id: 3,
-	// 				name: 'Jack',
-	// 				age: 19
-	// 			}
-	// 		]
-	// 	}
-	// });
 });
 
 router.get('/jym', function(req, res, next) {

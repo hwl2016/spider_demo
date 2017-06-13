@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/bootstrap/css/bootstrap.min.css' />
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+  	<%include common/base.ejs%>
   </head>
   <body>
   	<div class="btn btn-primary" id="js_btn">开始爬取<%= name %>页面数据</div>
 
-	<script src="/javascripts/jquery-1.7.2.min.js"></script>
+	<%include common/script.ejs%>
 	<script>
 		$(function() {
 			$('#js_btn').click(function() {

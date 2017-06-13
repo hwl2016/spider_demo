@@ -2,6 +2,7 @@ var mongoose = require("mongoose");
 var db = mongoose.createConnection('localhost', 'test_1');
 
 var GameSchema = new mongoose.Schema({
+	price: Number,
 	name: String
 })
 
@@ -11,13 +12,15 @@ var GameModel = db.model('Game', GameSchema);
 function MDB() {
 
 }
-
-MDB.saveName = (value) => {
+var cnt = 0;
+MDB.saveData = (name, price) => {
 	var gameEntity = new GameModel({
-		name: value
+		name: name,
+		price: price
 	})
 	gameEntity.save();
-	// console.log(`保存${value}成功！`)
+	cnt ++ ;
+	// console.log(`save ${name} -- ${price} success -- ${cnt}`)
 }
 
 module.exports = MDB;
