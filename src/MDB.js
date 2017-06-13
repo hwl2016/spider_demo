@@ -17,7 +17,7 @@ MDB.saveName = (value) => {
 		name: value
 	})
 	gameEntity.save();
-	console.log(`保存${value}成功！`)
+	// console.log(`保存${value}成功！`)
 }
 
 module.exports = MDB;
