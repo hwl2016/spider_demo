@@ -8,6 +8,7 @@ var iconv = require('iconv-lite');
 var log = require('./log');
 // var log = require('./MDB');
 
+
 var oResult = {
     aNewURLQueue: [],//尚未执行爬取任务的队列
     aOldURLQueue: [],//已完成爬取任务的队列
