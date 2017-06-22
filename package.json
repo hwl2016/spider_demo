@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "server": "supervisor ./bin/www",
+    "server": "set PORT=9000 && supervisor ./bin/www",
     "film": "node ./src/filmDemo/start"
   },
   "dependencies": {
