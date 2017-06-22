@@ -16,7 +16,8 @@
     "log4js": "^1.1.1",
     "mongoose": "^4.10.5",
     "morgan": "~1.8.1",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "~2.4.2",
+    "superagent": "^3.5.2"
   },
   "devDependencies": {
     "bufferhelper": "^0.2.1",
